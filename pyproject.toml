@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "purepress"
-version = "0.9.2"
+version = "0.10.0"
 description = "A simple static blog generator."
 license = "MIT"
 authors = ["Richard Chien <richardchienthebest@gmail.com>"]
@@ -19,23 +19,19 @@ classifiers = [
 purepress = "purepress.__main__:cli.main"
 
 [tool.poetry.dependencies]
-python = ">=3.6,<3.11"
-importlib-metadata = "<5.0"
-Werkzeug = "~1.0.1"
-Flask = "~1.1.2"
-PyYAML = "~5.4.1"
-click = "~7.1.2"
-colorama = "~0.4.3"
-feedgen = "~0.9.0"
-pytz = "~2020.1"
-Markdown = "~3.2.2"
-py-gfm = "~1.0.0"
+python = ">=3.12,<3.14"
+Werkzeug = "~3.1.3"
+Flask = "~3.1.0"
+PyYAML = "~6.0.2"
+click = "~8.1.8"
+colorama = "~0.4.6"
+feedgen = "~1.0.0"
+pytz = "~2025.2"
+Markdown = "~3.7"
+py-gfm = "~2.0.0"
 toml = "~0.10.2"
-html-toc = "~0.1.1"
-MarkupSafe = "~2.0.1"
-
-[tool.poetry.dev-dependencies]
-black = "~20.8b1"
+html-toc = "~0.1.2"
+MarkupSafe = "~3.0.2"
 
 [build-system]
 requires = ["poetry>=0.12"]
