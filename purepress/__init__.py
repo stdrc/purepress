@@ -77,16 +77,18 @@ class HookLinkHrefProcessor(markdown.treeprocessors.Treeprocessor):
         url = path
         if path.startswith("/posts/"):
             # /posts/2021-08-23-hello-world.md -> /post/2021/08/23/hello-world/
+            # /posts/2021-08-23-hello-world.md#anchor1 -> /post/2021/08/23/hello-world/#anchor1
             url = re.sub(r"^/posts/", f"{root}/post/", url)
             url = re.sub(r"-", "/", url, count=3)
-            url = re.sub(r"\.md$", "/", url)
+            url = re.sub(r"\.md(#.*)?$", r"/\1", url)
         elif path.startswith("/pages/"):
             # /pages/about/ -> /about/
             # /pages/about/index.md -> /about/
             # /pages/foo/bar.md -> /foo/bar.html
+            # /pages/foo/bar.md#anchor1 -> /foo/bar.html#anchor1
             url = re.sub(r"^/pages/", f"{root}/", url)
-            url = re.sub(r"index\.md$", "", url)
-            url = re.sub(r"\.md$", ".html", url)
+            url = re.sub(r"index\.md(#.*)?$", r"\1", url)
+            url = re.sub(r"\.md(#.*)?$", r".html\1", url)
         elif path.startswith("/raw/"):
             # /raw/foo/baz.html -> /foo/baz.html
             url = re.sub(r"^/raw/", f"{root}/", url)
